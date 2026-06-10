@@ -1,0 +1,79 @@
+.work {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  background: var(--ink);
+  padding: clamp(96px, 14vh, 180px) clamp(24px, 7vw, 120px);
+}
+
+.eyebrow {
+  font-family: var(--font-utility);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 20px;
+}
+
+.workTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+  margin-bottom: clamp(48px, 8vh, 96px);
+}
+
+.workTitle em {
+  font-style: italic;
+  color: var(--ember-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 32px 28px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 140, 66, 0.05),
+    rgba(110, 168, 216, 0.03) 60%,
+    transparent
+  );
+  transition: border-color 0.5s ease, transform 0.5s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 140, 66, 0.35);
+  transform: translateY(-4px);
+}
+
+.cardMeta {
+  display: block;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: var(--bone-dim);
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 300;
+}

@@ -1,0 +1,53 @@
+:root {
+  /* ── Cinematic palette ───────────────────────────── */
+  --ink: #0a0908;            /* near-black, warm */
+  --ink-deep: #060505;
+  --ember: #ff8c42;          /* warm practical orange */
+  --ember-soft: #ffb27a;
+  --monitor-blue: #6ea8d8;   /* soft monitor spill */
+  --bone: #f3ede6;           /* warm white text */
+  --bone-dim: rgba(243, 237, 230, 0.62);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-edge: rgba(255, 255, 255, 0.14);
+
+  /* ── Type ────────────────────────────────────────── */
+  --font-display: "Fraunces", georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-utility: "Space Grotesk", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink-deep);
+  color: var(--bone);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,345 @@
+/* ════════════════════════════════════════════════════
+   VideoIntro — cinematic sticky hero
+   ════════════════════════════════════════════════════ */
+
+.stickyWrap {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+}
+
+.hero {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--ink-deep);
+  isolation: isolate;
+}
+
+/* ── Video layers ──────────────────────────────────── */
+
+.videoAmbient,
+.videoMain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoAmbient {
+  z-index: 0;
+  transform: scale(1.25);
+  filter: blur(42px) brightness(0.55) saturate(1.25);
+}
+
+.videoMain {
+  z-index: 1;
+  filter: brightness(0.92) contrast(1.04) saturate(1.05);
+}
+
+/* ── Cinematic grading overlays ────────────────────── */
+
+.gradeBottom {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(6, 5, 5, 0.92) 0%,
+    rgba(6, 5, 5, 0.55) 26%,
+    rgba(6, 5, 5, 0.12) 52%,
+    transparent 72%
+  );
+}
+
+.gradeVignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 95% at 50% 42%,
+    transparent 48%,
+    rgba(6, 5, 5, 0.55) 100%
+  );
+}
+
+/* warm ember practical from lower-left, cool monitor spill upper-right */
+.gradeEmber {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(
+      55% 60% at 12% 88%,
+      rgba(255, 140, 66, 0.55),
+      transparent 70%
+    ),
+    radial-gradient(
+      45% 50% at 88% 10%,
+      rgba(110, 168, 216, 0.4),
+      transparent 70%
+    );
+}
+
+/* ── Landing content ───────────────────────────────── */
+
+.content {
+  position: absolute;
+  z-index: 4;
+  left: clamp(24px, 7vw, 120px);
+  bottom: clamp(110px, 16vh, 180px);
+  max-width: min(680px, 86vw);
+}
+
+.tagline {
+  font-family: var(--font-utility);
+  font-size: clamp(10px, 1.1vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ember-soft);
+  margin-bottom: clamp(14px, 2.4vh, 24px);
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(56px, 11vw, 148px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  text-shadow: 0 8px 60px rgba(0, 0, 0, 0.55);
+  margin-bottom: clamp(18px, 3vh, 30px);
+}
+
+.nameLine {
+  display: block;
+  will-change: transform, opacity;
+}
+
+.nameAccent {
+  font-style: italic;
+  font-weight: 300;
+  background: linear-gradient(100deg, var(--ember-soft), var(--ember) 55%, #d96a2a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 1.7;
+  color: var(--bone-dim);
+  max-width: 52ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Glassmorphism controls ────────────────────────── */
+
+.controls {
+  position: absolute;
+  z-index: 5;
+  right: clamp(20px, 4vw, 56px);
+  bottom: clamp(24px, 5vh, 48px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.glassBtn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  color: var(--bone);
+  cursor: pointer;
+  transition: background 0.45s ease, border-color 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.glassBtn:hover {
+  background: rgba(255, 140, 66, 0.16);
+  border-color: rgba(255, 140, 66, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 140, 66, 0.18);
+}
+
+.glassBtn:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+}
+
+.glassBtn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* ── "Tap for sound" badge ─────────────────────────── */
+
+.muteWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.soundHint {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone);
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  animation: hintPulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.55; transform: translateY(-50%) translateX(0); }
+  50%      { opacity: 1;    transform: translateY(-50%) translateX(-4px); }
+}
+
+/* ── Scroll indicator ──────────────────────────────── */
+
+.scrollIndicator {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: clamp(20px, 4vh, 40px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--bone-dim);
+  transition: color 0.4s ease;
+}
+
+.scrollIndicator:hover {
+  color: var(--ember-soft);
+}
+
+.scrollIndicator:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.scrollLabel {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  position: relative;
+  width: 1px;
+  height: 56px;
+  background: rgba(243, 237, 230, 0.18);
+  overflow: hidden;
+}
+
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -40%;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--ember));
+  animation: linePulse 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes linePulse {
+  0%   { top: -40%; }
+  100% { top: 110%; }
+}
+
+/* ── Page-load veil ────────────────────────────────── */
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: var(--ink-deep);
+  pointer-events: none;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .content {
+    left: 20px;
+    right: 20px;
+    bottom: 150px;
+  }
+
+  .name {
+    font-size: clamp(52px, 17vw, 84px);
+  }
+
+  .controls {
+    right: 16px;
+    bottom: 18px;
+  }
+
+  .glassBtn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* keep hint from colliding with edge on narrow screens */
+  .soundHint {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+
+  .scrollIndicator {
+    left: 24px;
+    transform: none;
+    align-items: flex-start;
+  }
+
+  .scrollLine {
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soundHint,
+  .scrollLine::after {
+    animation: none;
+  }
+  .veil {
+    display: none;
+  }
+}
