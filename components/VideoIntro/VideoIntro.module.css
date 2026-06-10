@@ -292,6 +292,13 @@
   z-index: 6;
   background: var(--ink-deep);
   pointer-events: none;
+  /* CSS-only fade: guarantees the page reveals itself even if JS fails */
+  animation: veilFade 2.2s ease 0.3s forwards;
+}
+
+@keyframes veilFade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 /* ── Responsive ────────────────────────────────────── */
