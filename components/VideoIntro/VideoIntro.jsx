@@ -188,7 +188,7 @@ export default function VideoIntro() {
 
           <p className={styles.subtitle}>
             6+ years building zero-to-one products at the intersection of AI,
-            strategy, and human impact — $48M in cost savings, 500+ D1
+            strategy, and human impact: $48M in cost savings, 500+ D1
             athletes served, MBA&nbsp;'26 at the Wisconsin School of Business.
           </p>
         </div>
