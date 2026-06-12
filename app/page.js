@@ -234,15 +234,170 @@ const AWARDS = [
 ];
 
 const STATS = [
-  { val: "6+", label: "Years in Product" },
-  { val: "500+", label: "D1 Athletes Served" },
-  { val: "$48MM", label: "Cost Savings Delivered", accent: true },
-  { val: "$500K+", label: "Fundraising Unlocked" },
-  { val: "70%", label: "Manual Work Reduced", accent: true },
-  { val: "32%", label: "CSAT Improvement" },
+  { val: "6+", label: "Years in Product", story: "From ops associate to PM. I learned the business from the inside before earning the authority to change it." },
+  { val: "500+", label: "D1 Athletes Served", story: "Onboarded onto the SecondWind NIL platform MVP, driving 40% partner-school adoption." },
+  { val: "$48MM", label: "Cost Savings Delivered", accent: true, story: "Saved by redesigning Flyhomes' variable compensation for 200+ agents, with zero downtime." },
+  { val: "$500K+", label: "Fundraising Unlocked", story: "Pipeline opened in the NIL platform's first month, validated through 30+ school interviews." },
+  { val: "70%", label: "Manual Work Reduced", accent: true, story: "Manual operations eliminated through Airtable and Zapier automation across 100+ institutions." },
+  { val: "32%", label: "CSAT Improvement", story: "Customer satisfaction lift from agile transformation and SQL-driven KPI dashboards." },
 ];
 
 /* ── Small components ────────────────────────────────── */
+
+/* ── Ambient interactive background ──────────────────── */
+
+function AmbientBackground() {
+  const canvasRef = useRef(null);
+  const glowRef = useRef(null);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    let W, H;
+    const resize = () => {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const COLORS = ["255,140,66", "255,178,122", "243,237,230", "110,168,216"];
+    const N = 90;
+    const dust = Array.from({ length: N }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.6 + 0.4,
+      c: COLORS[(Math.random() * COLORS.length) | 0],
+      o: Math.random() * 0.32 + 0.08,
+      vy: -(Math.random() * 0.22 + 0.06),
+      ph: Math.random() * Math.PI * 2,
+      sp: Math.random() * 0.5 + 0.2,
+      px: 0,
+      py: 0,
+    }));
+
+    let mx = -1e4, my = -1e4, gx = -1e4, gy = -1e4;
+    const onMove = (e) => { mx = e.clientX; my = e.clientY; };
+    window.addEventListener("pointermove", onMove, { passive: true });
+
+    let hidden = document.hidden;
+    const onVis = () => (hidden = document.hidden);
+    document.addEventListener("visibilitychange", onVis);
+
+    let t = 0, raf;
+    const tick = () => {
+      raf = requestAnimationFrame(tick);
+      if (hidden) return;
+      t += 0.012;
+      ctx.clearRect(0, 0, W, H);
+
+      for (const d of dust) {
+        // gentle upward drift + sine sway
+        d.y += d.vy;
+        if (d.y < -10) { d.y = H + 10; d.x = Math.random() * W; }
+        const sway = Math.sin(t * d.sp + d.ph) * 0.4;
+
+        // cursor repel
+        const dx = d.x - mx, dy = d.y - my;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 130 && dist > 0) {
+          const f = (130 - dist) / 130;
+          d.px += (dx / dist) * f * 1.6;
+          d.py += (dy / dist) * f * 1.6;
+        }
+        d.px *= 0.92;
+        d.py *= 0.92;
+
+        const flicker = d.o * (0.7 + Math.sin(t * d.sp * 2 + d.ph) * 0.3);
+        ctx.beginPath();
+        ctx.arc(d.x + sway + d.px, d.y + d.py, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${d.c},${flicker})`;
+        ctx.fill();
+      }
+
+      // lerped cursor glow
+      gx += (mx - gx) * 0.06;
+      gy += (my - gy) * 0.06;
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate(${gx}px, ${gy}px)`;
+      }
+    };
+    tick();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("pointermove", onMove);
+      document.removeEventListener("visibilitychange", onVis);
+    };
+  }, []);
+
+  return (
+    <div className={styles.ambient} aria-hidden="true">
+      <canvas ref={canvasRef} />
+      <div ref={glowRef} className={styles.cursorGlow} />
+    </div>
+  );
+}
+
+/* ── Scroll progress bar ─────────────────────────────── */
+
+function ScrollProgress() {
+  const barRef = useRef(null);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? h.scrollTop / max : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${pct})`;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div className={styles.progressTrack} aria-hidden="true">
+      <div ref={barRef} className={styles.progressBar} />
+    </div>
+  );
+}
+
+/* ── Recruiter toast ─────────────────────────────────── */
+
+function HireToast() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    let seen = false;
+    try { seen = sessionStorage.getItem("hireToast") === "1"; } catch {}
+    if (seen) return;
+    const id = setTimeout(() => setShow(true), 7000);
+    return () => clearTimeout(id);
+  }, []);
+  const dismiss = () => {
+    setShow(false);
+    try { sessionStorage.setItem("hireToast", "1"); } catch {}
+  };
+  if (!show) return null;
+  return (
+    <aside className={styles.toast} role="status">
+      <span className={styles.toastDot} aria-hidden="true" />
+      <div className={styles.toastBody}>
+        <p className={styles.toastTitle}>Actively interviewing</p>
+        <p className={styles.toastText}>Full-time PM roles · starting May 2026</p>
+      </div>
+      <a href="#contact" className={styles.toastCta} onClick={dismiss}>
+        Let&apos;s talk
+      </a>
+      <button type="button" className={styles.toastClose} onClick={dismiss} aria-label="Dismiss">
+        ✕
+      </button>
+    </aside>
+  );
+}
 
 function StatVal({ val, accent }) {
   const ref = useRef(null);
@@ -393,6 +548,10 @@ export default function Home() {
 
   return (
     <main>
+      <ScrollProgress />
+      <AmbientBackground />
+      <HireToast />
+
       {/* ── Nav ─────────────────────────────────────── */}
       <nav className={styles.nav} aria-label="Primary">
         <a href="#" className={styles.navLogo}>
@@ -478,9 +637,10 @@ export default function Home() {
             <div className={styles.reveal}>
               <div className={styles.statsGrid}>
                 {STATS.map((s) => (
-                  <div key={s.label} className={styles.statBox}>
+                  <div key={s.label} className={styles.statBox} tabIndex={0}>
                     <StatVal val={s.val} accent={s.accent} />
                     <span className={styles.statLabel}>{s.label}</span>
+                    <span className={styles.statPop} role="tooltip">{s.story}</span>
                   </div>
                 ))}
               </div>
