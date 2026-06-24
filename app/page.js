@@ -691,7 +691,7 @@ export default function Home() {
         {/* ── Build Lab ───────────────────────────────── */}
         <section className={styles.section} id="build-lab">
          <iframe
-  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/build-lab.html`}
+ src="/Portfolio/build-lab.html"
   title="Build Lab"
   style={{
     width: "100%",
