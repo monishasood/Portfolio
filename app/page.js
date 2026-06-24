@@ -689,19 +689,47 @@ export default function Home() {
           </div>
         </section>
         {/* ── Build Lab ───────────────────────────────── */}
-        <section className={styles.section} id="build-lab">
-         <iframe
- src="/Portfolio/build-lab.html"
-  title="Build Lab"
-  style={{
-    width: "100%",
-    border: "none",
-    minHeight: "900px",
-    borderRadius: "18px",
-    display: "block",
-  }}
-  loading="lazy"
-  />
+<section className={styles.section} id="build-lab">
+  <p className={`${styles.eyebrow} ${styles.reveal}`}>Build Lab</p>
+  <h2 className={`${styles.title} ${styles.reveal}`}>
+    Don&apos;t take my word for it — <em>open the apps.</em>
+  </h2>
+  <p className={`${styles.reveal}`} style={{color:"#a59d92", marginBottom:"2rem"}}>
+    Small AI products I built end to end, from problem to shipped.
+  </p>
+  <div className={`${styles.reveal}`} style={{display:"flex", flexDirection:"column", gap:"1.5rem"}}>
+    <a href="https://monishasood.github.io/Product/#" target="_blank" rel="noopener noreferrer"
+      style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", textDecoration:"none", color:"inherit"}}>
+      <div>
+        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#e9a23b", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Live Demo</p>
+        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>FreshPlate</h3>
+        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>Snap what&apos;s in your fridge and get a dinner that uses it up.</p>
+      </div>
+    </a>
+    <a href="https://monishasood.github.io/Job-Application/" target="_blank" rel="noopener noreferrer"
+      style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", textDecoration:"none", color:"inherit"}}>
+      <div>
+        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#e9a23b", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Live</p>
+        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>PM Job Radar</h3>
+        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>Watches PM job boards around the clock and surfaces only the roles worth your time.</p>
+      </div>
+    </a>
+    <a href="https://www.figma.com/make/bzB7xsnk1vSucovqgetxjz/Create-New-Project?p=f&t=qeU6ClxjYyB7f3FP-0" target="_blank" rel="noopener noreferrer"
+      style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", textDecoration:"none", color:"inherit"}}>
+      <div>
+        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#e9a23b", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Prototype</p>
+        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>Win/Loss Analytics</h3>
+        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>AI dashboard that reads closed deals and shows revenue teams exactly why they win and lose.</p>
+      </div>
+    </a>
+    <div style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", opacity:0.5}}>
+      <div>
+        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#a59d92", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Coming Soon</p>
+        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>PRD‑from‑a‑sentence</h3>
+        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>Type one sentence about a feature; get back a structured PRD.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
         {/* ── Skills ──────────────────────────────────── */}
