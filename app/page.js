@@ -690,17 +690,17 @@ export default function Home() {
         </section>
         {/* ── Build Lab ───────────────────────────────── */}
         <section className={styles.section} id="build-lab">
-          <iframe
-    src="/Product-Manager/build-lab.html"
-    title="Build Lab"
-    style={{
-      width: "100%",
-      border: "none",
-      minHeight: "900px",
-      borderRadius: "18px",
-      display: "block",
-    }}
-    loading="lazy"
+         <iframe
+  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/build-lab.html`}
+  title="Build Lab"
+  style={{
+    width: "100%",
+    border: "none",
+    minHeight: "900px",
+    borderRadius: "18px",
+    display: "block",
+  }}
+  loading="lazy"
   />
 </section>
 
