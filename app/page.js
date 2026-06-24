@@ -499,9 +499,10 @@ const NAV = [
   ["about", "About"],
   ["experience", "Experience"],
   ["projects", "Case Studies"],
+  ["build-lab", "Build Lab"],
   ["skills", "Skills"],
   ["recommendations", "Recommendations"],
-  ["awards", "Recognition"],
+  ["awards", "Recognition"], 
 ];
 
 export default function Home() {
@@ -687,6 +688,21 @@ export default function Home() {
             {PROJECTS.map((p) => <FlipCard key={p.name} p={p} />)}
           </div>
         </section>
+        {/* ── Build Lab ───────────────────────────────── */}
+        <section className={styles.section} id="build-lab">
+          <iframe
+    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/build-lab.html`}
+    title="Build Lab"
+    style={{
+      width: "100%",
+      border: "none",
+      minHeight: "900px",
+      borderRadius: "18px",
+      display: "block",
+    }}
+    loading="lazy"
+  />
+</section>
 
         {/* ── Skills ──────────────────────────────────── */}
         <section className={styles.section} id="skills">
