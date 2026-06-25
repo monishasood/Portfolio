@@ -192,29 +192,14 @@ const RECS = [
     role: "Product Management | Strategy | Agile Leadership · managed Monisha directly",
   },
   {
-    text: "Monisha is an amazing talent. She's so fast to pick up new processes, curious, inquisitive and always finding new ways to improve existing systems. She excels in data and is a wizard with spreadsheets. Her ability to execute diverse project tasks showcases her analytical, problem-solving, and presentation skills. I highly recommend Monisha for her ability to deliver results and her positive impact on team dynamics.",
-    initials: "JH", name: "Jennifer Horton",
-    role: "Chief of Staff | GTM | Strategy & Operations · Flyhomes",
-  },
-  {
     text: "Monisha proactively engaged with me and other subject matter experts to gain a deep understanding of key customer pain points. She volunteered to join customer calls as a product representative, and her involvement proved invaluable. Thanks to her proactive, results-driven approach, we successfully added three new features to our product roadmap.",
     initials: "TS", name: "Tushar Saroch",
     role: "Support Manager · worked with Monisha on the same team",
   },
   {
-    text: "Monisha brings a unique blend of creativity and analytical thinking that consistently drives projects forward. Her collaborative approach and willingness to support teammates foster a positive and productive work environment. Her attention to detail and commitment to delivering high-quality results have been instrumental in our success.",
-    initials: "RD", name: "Rohit Deshpande",
-    role: "Operations Management | Program Management · managed Monisha directly",
-  },
-  {
-    text: "Never seen anyone handle difficult situations or conversations as effortlessly as Monisha. Great at handling people, customers, and escalations. She is one of the few hardworking people I have met at Flyhomes who adapted and excelled at every job they were given and made it look flawless.",
-    initials: "DS", name: "Deepak Sahu",
-    role: "Just Work · worked with Monisha at Flyhomes",
-  },
-  {
-    text: "Monisha is one of my most memorable colleagues, and I reflected on that when we got together after a while, having lived many lives since leaving Flyhomes. We had joined around the same time and saw each other grow with the company. My success depended heavily on her success, and soon enough, her team grew to cover the most significant scalable endeavor. Monisha demonstrates what it's like to work towards career expansion at a startup and become one of the most trustworthy individuals you've worked with cross-functionally. Monisha worked across critical operations that were lifelines for real estate advisors and essential to convert a real estate contract into a done deal. Her life continues to grow in various directions, as she also educates others while pursuing her MBA. I'd work with her again, if I could. She's truly inspiring.",
-    initials: "MM", name: "Mehar Mira",
-    role: "Sales | Strategy | Storytelling · worked with Monisha at Flyhomes",
+    text: "Monisha is an amazing talent. She's so fast to pick up new processes, curious, inquisitive and always finding new ways to improve existing systems. She excels in data and is a wizard with spreadsheets. I highly recommend Monisha for her ability to deliver results and her positive impact on team dynamics.",
+    initials: "JH", name: "Jennifer Horton",
+    role: "Chief of Staff | GTM | Strategy & Operations · Flyhomes",
   },
 ];
 
