@@ -688,47 +688,97 @@ export default function Home() {
             {PROJECTS.map((p) => <FlipCard key={p.name} p={p} />)}
           </div>
         </section>
-        {/* ── Build Lab ───────────────────────────────── */}
+       /* ──────────────────────────────────────────────────────────────
+   BUILD LAB — drop-in replacement
+   In app/page.js, replace your current Build Lab <section> …</section>
+   (the one that starts at  <section className={styles.section} id="build-lab">
+   and ends just before the Skills section) with EVERYTHING below.
+
+   It reuses your existing styles.section / styles.eyebrow / styles.title /
+   styles.reveal, and uses the global .bl-* classes you'll add to globals.css.
+   The SVG previews are injected as-is so they render pixel-perfect.
+   ────────────────────────────────────────────────────────────── */
+
+{/* ── Build Lab ───────────────────────────────── */}
 <section className={styles.section} id="build-lab">
   <p className={`${styles.eyebrow} ${styles.reveal}`}>Build Lab</p>
   <h2 className={`${styles.title} ${styles.reveal}`}>
     Don&apos;t take my word for it — <em>open the apps.</em>
   </h2>
-  <p className={`${styles.reveal}`} style={{color:"#a59d92", marginBottom:"2rem"}}>
-    Small AI products I built end to end, from problem to shipped.
+  <p className={`${styles.reveal}`} style={{ color: "#b3a99d", margin: "0 0 2.5rem", fontSize: "1.05rem", lineHeight: 1.65, maxWidth: "54ch" }}>
+    Small AI products I built end to end, from problem to shipped. Each one is a real, working thing — press the button and click around.
   </p>
-  <div className={`${styles.reveal}`} style={{display:"flex", flexDirection:"column", gap:"1.5rem"}}>
-    <a href="https://monishasood.github.io/Product/#" target="_blank" rel="noopener noreferrer"
-      style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", textDecoration:"none", color:"inherit"}}>
-      <div>
-        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#e9a23b", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Live Demo</p>
-        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>FreshPlate</h3>
-        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>Snap what&apos;s in your fridge and get a dinner that uses it up.</p>
-      </div>
-    </a>
-    <a href="https://monishasood.github.io/Job-Application/" target="_blank" rel="noopener noreferrer"
-      style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", textDecoration:"none", color:"inherit"}}>
-      <div>
-        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#e9a23b", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Live</p>
-        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>PM Job Radar</h3>
-        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>Watches PM job boards around the clock and surfaces only the roles worth your time.</p>
-      </div>
-    </a>
-    <a href="https://www.figma.com/make/bzB7xsnk1vSucovqgetxjz/Create-New-Project?p=f&t=qeU6ClxjYyB7f3FP-0" target="_blank" rel="noopener noreferrer"
-      style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", textDecoration:"none", color:"inherit"}}>
-      <div>
-        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#e9a23b", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Prototype</p>
-        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>Win/Loss Analytics</h3>
-        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>AI dashboard that reads closed deals and shows revenue teams exactly why they win and lose.</p>
-      </div>
-    </a>
-    <div style={{display:"flex", alignItems:"center", gap:"1rem", background:"#141110", border:"1px solid rgba(255,255,255,.08)", borderRadius:"14px", padding:"1.5rem", opacity:0.5}}>
-      <div>
-        <p style={{fontFamily:"JetBrains Mono, monospace", fontSize:"11px", color:"#a59d92", letterSpacing:".15em", textTransform:"uppercase", margin:"0 0 6px"}}>Coming Soon</p>
-        <h3 style={{margin:"0 0 6px", fontSize:"20px"}}>PRD‑from‑a‑sentence</h3>
-        <p style={{margin:0, color:"#a59d92", fontSize:"14px"}}>Type one sentence about a feature; get back a structured PRD.</p>
-      </div>
-    </div>
+
+  <div className={`bl-grid ${styles.reveal}`}>
+    {[
+      {
+        status: "Live demo", live: true,
+        name: "FreshPlate",
+        what: "Snap what's in your fridge and get a dinner that uses it up. A food-waste app built on the Anthropic API.",
+        stack: ["Claude API", "Single-file web app", "Zero backend"],
+        href: "https://monishasood.github.io/Product/#", cta: "Open the app",
+        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="FreshPlate suggesting a recipe from fridge contents"><rect x="28" y="40" width="150" height="118" rx="10" fill="#1c1815" stroke="rgba(255,255,255,.08)"/><text x="44" y="62" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">IN YOUR FRIDGE</text><g font-family="Inter, sans-serif" font-size="11" fill="#ddd6cc"><circle cx="46" cy="80" r="2.5" fill="#74b8a6"/><text x="56" y="84">spinach</text><circle cx="46" cy="100" r="2.5" fill="#74b8a6"/><text x="56" y="104">2 eggs</text><circle cx="46" cy="120" r="2.5" fill="#74b8a6"/><text x="56" y="124">feta</text><circle cx="46" cy="140" r="2.5" fill="#e9a23b"/><text x="56" y="144" fill="#e9a23b">tomato · use soon</text></g><path d="M186 99 h26" stroke="#e9a23b" stroke-width="2" fill="none"/><path d="M208 94 l8 5 l-8 5" stroke="#e9a23b" stroke-width="2" fill="none"/><rect x="224" y="40" width="168" height="118" rx="10" fill="#1c1815" stroke="rgba(233,162,59,.3)"/><text x="240" y="62" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#e9a23b" letter-spacing="1">TONIGHT</text><text x="240" y="86" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#f6f1e9">Spinach &amp; feta</text><text x="240" y="106" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#f6f1e9">frittata</text><rect x="240" y="124" width="92" height="22" rx="6" fill="rgba(116,207,142,.16)"/><text x="252" y="139" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#74cf8e">uses 4 of 4 ✓</text></svg>`,
+      },
+      {
+        status: "Live", live: true,
+        name: "PM Job Radar",
+        what: "An automation that watches PM job boards around the clock and surfaces only the roles worth my time.",
+        stack: ["n8n", "Airtable", "GitHub Pages"],
+        href: "https://monishasood.github.io/Job-Application/", cta: "Open the radar",
+        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="PM Job Radar scanning job boards for matching roles"><g transform="translate(108 94)"><circle r="74" fill="none" stroke="rgba(255,255,255,.08)"/><circle r="49" fill="none" stroke="rgba(255,255,255,.06)"/><circle r="24" fill="none" stroke="rgba(255,255,255,.06)"/><line x1="-74" y1="0" x2="74" y2="0" stroke="rgba(255,255,255,.05)"/><line x1="0" y1="-74" x2="0" y2="74" stroke="rgba(255,255,255,.05)"/><g class="bl-sweep"><path d="M0 0 L74 0 A74 74 0 0 1 30 67 Z" fill="url(#blsweep)"/></g><circle cx="34" cy="-22" r="3.5" fill="#e9a23b"/><circle cx="-44" cy="18" r="3" fill="#74b8a6"/><circle cx="14" cy="40" r="3" fill="#74b8a6"/></g><defs><linearGradient id="blsweep" x1="0" y1="0" x2="1" y2="0.6"><stop offset="0" stop-color="rgba(233,162,59,.45)"/><stop offset="1" stop-color="rgba(233,162,59,0)"/></linearGradient></defs><rect x="224" y="44" width="168" height="100" rx="10" fill="#1c1815" stroke="rgba(255,255,255,.08)"/><text x="240" y="64" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#74cf8e" letter-spacing="1">3 NEW MATCHES</text><g font-family="Inter, sans-serif" font-size="11" fill="#ddd6cc"><text x="240" y="86">PM · AI infra · Remote</text><text x="240" y="106">Sr PM · fintech · NYC</text><text x="240" y="126" fill="#a59d92">APM · seed startup · SF</text></g></svg>`,
+      },
+      {
+        status: "Coming soon", live: false,
+        name: "PRD-from-a-sentence",
+        what: "Type one sentence about a feature; get back a structured PRD with problem, goals, metrics, and scope.",
+        stack: ["Claude API", "Single-file web app"],
+        href: null, cta: "Coming soon",
+        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="One sentence turning into a structured PRD"><rect x="28" y="50" width="150" height="34" rx="8" fill="#1c1815" stroke="rgba(255,255,255,.1)"/><text x="42" y="71" font-family="Inter, sans-serif" font-size="10.5" fill="#a59d92">"a tool that…"</text><text x="40" y="100" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">ONE SENTENCE</text><path d="M186 67 h26" stroke="#e9a23b" stroke-width="2" fill="none"/><path d="M208 62 l8 5 l-8 5" stroke="#e9a23b" stroke-width="2" fill="none"/><rect x="224" y="28" width="168" height="132" rx="10" fill="#1c1815" stroke="rgba(233,162,59,.3)"/><rect x="240" y="44" width="60" height="8" rx="4" fill="#e9a23b"/><text x="240" y="70" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#74b8a6" letter-spacing="1">PROBLEM</text><rect x="240" y="78" width="136" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/><rect x="240" y="89" width="120" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><text x="240" y="112" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#74b8a6" letter-spacing="1">GOALS &amp; METRICS</text><rect x="240" y="120" width="136" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/><rect x="240" y="131" width="100" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><text x="240" y="153" font-family="Inter, sans-serif" font-size="9.5" fill="#74cf8e">+ requirements, risks, scope</text></svg>`,
+      },
+      {
+        status: "Prototype", live: false, muted: true,
+        name: "Win/Loss Analytics",
+        what: "An AI dashboard that reads closed deals and shows revenue teams exactly why they win and lose. Built as my MBA capstone with Flexera.",
+        stack: ["Figma", "Predictive modeling", "B2B SaaS"],
+        href: "https://www.figma.com/make/bzB7xsnk1vSucovqgetxjz/Create-New-Project?p=f&t=qeU6ClxjYyB7f3FP-0", cta: "View the prototype",
+        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="AI win-loss analytics dashboard showing a 62 percent win rate"><g transform="translate(96 96)"><circle r="44" fill="none" stroke="#2a2420" stroke-width="16"/><circle r="44" fill="none" stroke="#e9a23b" stroke-width="16" stroke-dasharray="171 276" stroke-linecap="round" transform="rotate(-90)"/><text x="0" y="-2" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#f6f1e9">62%</text><text x="0" y="16" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#a59d92" letter-spacing="1">WIN RATE</text></g><text x="200" y="52" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">TOP LOSS DRIVERS</text><g font-family="Inter, sans-serif" font-size="10" fill="#ddd6cc"><text x="200" y="76">Price</text><rect x="262" y="68" width="120" height="9" rx="4.5" fill="#e9a23b"/><text x="200" y="100">Timing</text><rect x="262" y="92" width="84" height="9" rx="4.5" fill="#c98a33"/><text x="200" y="124">Features</text><rect x="262" y="116" width="58" height="9" rx="4.5" fill="#8f6428"/></g></svg>`,
+      },
+    ].map((p) => {
+      const tilt = (e) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const c = e.currentTarget, r = c.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        c.style.transform = `translateY(-6px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
+      };
+      const reset = (e) => { e.currentTarget.style.transform = ""; };
+      return (
+        <article key={p.name} className="bl-card" onPointerMove={tilt} onPointerLeave={reset}>
+          <div className="bl-preview">
+            <span className="bl-status" style={p.muted ? { color: "#a59d92" } : undefined}>
+              <span className="bl-dot" style={p.muted ? { background: "#a59d92", animation: "none", boxShadow: "none" } : undefined} />
+              {p.status}
+            </span>
+            <div className="bl-svg" dangerouslySetInnerHTML={{ __html: p.svg }} />
+          </div>
+          <div className="bl-body">
+            <h3 className="bl-name">{p.name}</h3>
+            <p className="bl-what">{p.what}</p>
+            <div className="bl-stack">{p.stack.map((s) => <span key={s}>{s}</span>)}</div>
+            <div className="bl-actions">
+              {p.href ? (
+                <a className="bl-open" href={p.href} target="_blank" rel="noopener noreferrer">
+                  {p.cta}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              ) : (
+                <span className="bl-soon">{p.cta}</span>
+              )}
+            </div>
+          </div>
+        </article>
+      );
+    })}
   </div>
 </section>
 
