@@ -110,6 +110,7 @@ const PROJECTS = [
     impact: "$500K+ raised in month 1 · 25+ athletes · 70% manual work cut",
     stack: ["0→1", "Airtable", "Zapier", "OKRs", "Agile"],
     img: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&q=80",
+    caseStudy: "secondwind-case-study.html",
   },
   {
     label: "Flexera · MBA Capstone 2024–25",
