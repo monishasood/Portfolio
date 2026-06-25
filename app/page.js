@@ -460,7 +460,7 @@ function FlipCard({ p }) {
           <span className={styles.flipTitle}>{p.name}</span>
           <span className={styles.flipHint}>↻ click to reveal</span>
         </div>
-       <div className={styles.flipBack}>
+        <div className={styles.flipBack}>
           <div>
             <p className={styles.pbLabel}>{p.label}</p>
             <h3 className={styles.pbName}>{p.name}</h3>
@@ -471,7 +471,7 @@ function FlipCard({ p }) {
                 <span key={s} className={styles.pbPill}>{s}</span>
               ))}
             </div>
-            {p.caseStudy && (
+          </div> {p.caseStudy && (
               
                 href={p.caseStudy}
                 onClick={(e) => e.stopPropagation()}
@@ -480,9 +480,12 @@ function FlipCard({ p }) {
                 Read the full case study →
               </a>
             )}
-          </div>
           <span className={styles.pbBack}>↩ flip back</span>
         </div>
+      </div>
+    </div>
+  );
+}
 /* ── Page ────────────────────────────────────────────── */
 
 const NAV = [
