@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 106.25%;   /* 16px → 17px. Readability lift. Use 109% for bigger, 100% to undo. */
 }
 
 body {
@@ -51,19 +52,10 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
 /* ══════════════════════════════════════════════════════════════
-   ADD THIS TO THE BOTTOM OF  app/globals.css
-   (globals.css is a plain global stylesheet, so these .bl-* classes
-   apply directly to the className strings used in the Build Lab JSX.)
+   BUILD LAB CARDS
    ══════════════════════════════════════════════════════════════ */
-
-/* ── 1. Site-wide readability lift ─────────────────────────────
-   Gentle base bump. Everything sized in rem grows ~6% with this.
-   If it feels like too much, drop to 100%. If still too small, 109%. */
-html { font-size: 106.25%; }   /* 16px → 17px */
-
-
-/* ── 2. Build Lab cards ───────────────────────────────────────── */
 .bl-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
