@@ -471,8 +471,7 @@ function FlipCard({ p }) {
                 <span key={s} className={styles.pbPill}>{s}</span>
               ))}
             </div>
-            {p.caseStudy && (
-              
+             {p.caseStudy && (
                 href={p.caseStudy}
                 onClick={(e) => e.stopPropagation()}
                 style={{ display: "inline-block", marginTop: "12px", color: "var(--ember)", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none" }}
