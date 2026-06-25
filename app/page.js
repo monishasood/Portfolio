@@ -685,21 +685,11 @@ export default function Home() {
             Products built from <em>zero.</em>
           </h2>
           <div className={styles.projectsGrid}>
-            {PROJECTS.map((p) => <FlipCard key={p.name} p={p} />)}
+           {PROJECTS.map((p) => <FlipCard key={p.name} p={p} />)}
           </div>
         </section>
-      {/* ── Build Lab ───────────────────────────────── */}
-<section className={styles.section} id="build-lab">
-  <p className={`${styles.eyebrow} ${styles.reveal}`}>Build Lab</p>
-  <h2 className={`${styles.title} ${styles.reveal}`}>
-    Don&apos;t take my word for it — <em>open the apps.</em>
-  </h2>
-  <p className={styles.reveal} style={{ color: "#b3a99d", margin: "0 0 2.5rem", fontSize: "1.05rem", lineHeight: 1.65, maxWidth: "54ch" }}>
-    Small AI products I built end to end, from problem to shipped. Each one is a real, working thing — press the button and click around.
-  </p>
 
-  <div className={`bl-grid ${styles.reveal}`}>
-    {[
+        {/* ── Build Lab ───────────────────────────────── */}
       {
         status: "Live demo", muted: false,
         name: "FreshPlate",
