@@ -471,7 +471,7 @@ function FlipCard({ p }) {
                 <span key={s} className={styles.pbPill}>{s}</span>
               ))}
             </div>
-          </div> {p.caseStudy && (
+            {p.caseStudy && (
               
                 href={p.caseStudy}
                 onClick={(e) => e.stopPropagation()}
@@ -480,9 +480,9 @@ function FlipCard({ p }) {
                 Read the full case study →
               </a>
             )}
+          </div>
           <span className={styles.pbBack}>↩ flip back</span>
         </div>
-      </div>
     </div>
   );
 }
