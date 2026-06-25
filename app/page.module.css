@@ -647,12 +647,10 @@
 }
 
 .recText {
-  font-size: 0.92rem;
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.75;
-  color: var(--bone-dim);
-  margin-bottom: 1.2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .recPerson {
