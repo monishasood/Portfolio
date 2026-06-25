@@ -472,7 +472,7 @@ function FlipCard({ p }) {
               ))}
             </div>
             {p.caseStudy && (
-                           <a
+              
                 href={p.caseStudy}
                 onClick={(e) => e.stopPropagation()}
                 style={{ display: "inline-block", marginTop: "12px", color: "var(--ember)", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none" }}
@@ -483,6 +483,7 @@ function FlipCard({ p }) {
           </div>
           <span className={styles.pbBack}>↩ flip back</span>
         </div>
+      </div>
     </div>
   );
 }
