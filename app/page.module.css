@@ -557,53 +557,56 @@
   transform: translateY(-2px);
 }
 
-.toolsSection { margin-top: 3rem; }
-
-.toolsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
-  gap: 0.85rem;
+/* ── Tools marquee ─────────────────────────────────── */
+.toolsMarquee {
+  position: relative;
+  overflow: hidden;
+  padding: 0.4rem 0;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
+.toolsRow { display: flex; width: max-content; gap: 0.7rem; padding: 0.45rem 0; }
+.toolsRowL { animation: toolsLeft 52s linear infinite; }
+.toolsRowR { animation: toolsRight 60s linear infinite; }
+.toolsMarquee:hover .toolsRow { animation-play-state: paused; }
+@keyframes toolsLeft  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes toolsRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-.toolCard {
-  display: flex;
-  flex-direction: column;
+.toolPill {
+  display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 1.4rem 0.6rem 1.1rem;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 14px;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  padding: 0.62rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
-
-.toolCard:hover {
-  border-color: rgba(110, 168, 216, 0.35);
-  transform: translateY(-3px);
+.toolPill:hover {
+  border-color: rgba(255, 140, 66, 0.4);
+  background: rgba(255, 140, 66, 0.05);
+  transform: translateY(-2px);
 }
-
-.toolCard img { width: 42px; height: 42px; object-fit: contain; }
-
-.toolMono {
-  width: 42px; height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.toolPill img { width: 26px; height: 26px; object-fit: contain; display: block; }
+.toolPillInvert { filter: invert(1) brightness(0.92); }
+.toolPillMono {
+  width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 7px;
   font-family: var(--font-utility);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.01em;
   color: var(--ember);
-  background: rgba(255, 140, 66, 0.1);
-  border-radius: 10px;
+  background: rgba(255, 140, 66, 0.12);
 }
-
-.toolName {
+.toolPillName {
   font-family: var(--font-utility);
-  font-size: 0.74rem;
-  color: var(--bone-dim);
-  text-align: center;
-  line-height: 1.2;
+  font-size: 0.84rem;
+  letter-spacing: 0.01em;
+  color: var(--bone);
+  white-space: nowrap;
 }
+@media (prefers-reduced-motion: reduce) { .toolsRow { animation: none !important; } }
 
 /* ── Recommendations ───────────────────────────────── */
 
