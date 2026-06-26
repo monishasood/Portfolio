@@ -1080,3 +1080,341 @@
   .toast { animation: none; }
   .progressBar { box-shadow: none; }
 }
+/* ── Zoom button on the flip back ──────────────────── */
+.pbZoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-utility);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--ink-deep);
+  background: var(--ember);
+  border: none;
+  border-radius: 999px;
+  padding: 0.52rem 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pbZoom:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 140, 66, 0.35); }
+
+/* ── Case study zoom modal ─────────────────────────── */
+.csOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(4, 3, 3, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: clamp(16px, 5vh, 60px) 16px;
+  overflow-y: auto;
+}
+
+.csModal {
+  position: relative;
+  width: min(760px, 100%);
+  background: linear-gradient(170deg, #15110d, #0a090f);
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  border-radius: 22px;
+  padding: clamp(1.6rem, 4vw, 2.8rem);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  transform-origin: center top;
+  animation: csZoomIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes csZoomIn {
+  from { opacity: 0; transform: scale(0.9) translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.csClose {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--bone-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.csClose:hover { color: var(--bone); border-color: rgba(255, 140, 66, 0.4); }
+
+.csMLabel {
+  font-family: var(--font-utility);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--monitor-blue);
+  margin-bottom: 0.5rem;
+}
+.csMName {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  line-height: 1.1;
+  margin-bottom: 0.7rem;
+}
+.csMTags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
+.csMTag {
+  font-family: var(--font-utility);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  color: var(--bone-dim);
+  border: 1px solid rgba(110, 168, 216, 0.22);
+  background: rgba(110, 168, 216, 0.07);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+}
+
+.csBlock { margin-bottom: 1.5rem; }
+.csHead {
+  font-family: var(--font-utility);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.csHead::before { content: ""; width: 18px; height: 1px; background: var(--ember); }
+.csText { color: var(--bone-dim); line-height: 1.72; font-size: 0.98rem; margin: 0; }
+
+.csSteps {
+  list-style: none;
+  counter-reset: s;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.csSteps li {
+  position: relative;
+  counter-increment: s;
+  padding-left: 2.4rem;
+  color: var(--bone-dim);
+  line-height: 1.65;
+  font-size: 0.96rem;
+}
+.csSteps li::before {
+  content: counter(s);
+  position: absolute;
+  left: 0; top: -2px;
+  width: 1.7rem; height: 1.7rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 0.92rem;
+  color: var(--ember-soft);
+  background: rgba(255, 140, 66, 0.08);
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  border-radius: 50%;
+}
+.csSteps li b { color: var(--bone); font-weight: 600; }
+
+.csOutcome {
+  background: rgba(255, 140, 66, 0.05);
+  border: 1px solid rgba(255, 140, 66, 0.16);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+}
+
+.csMChips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.csMChip {
+  font-family: var(--font-utility);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--ember-soft);
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+}
+
+@media (prefers-reduced-motion: reduce) { .csModal { animation: none; } }/* ── Floating background orbs ──────────────────────── */
+.floaters {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  bottom: -14px;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(circle, var(--c) 0%, transparent 70%);
+  animation: orbFloat var(--d) linear var(--delay) infinite;
+}
+@keyframes orbFloat {
+  0%   { transform: translate(0, 0) scale(0.7);          opacity: 0; }
+  12%  { opacity: var(--o); }
+  88%  { opacity: var(--o); }
+  100% { transform: translate(var(--x), -112vh) scale(1.15); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orb { animation: none; opacity: 0.1; transform: none; }
+}
+/* ── Zoom button on the flip back ──────────────────── */
+.pbZoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-utility);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--ink-deep);
+  background: var(--ember);
+  border: none;
+  border-radius: 999px;
+  padding: 0.52rem 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pbZoom:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 140, 66, 0.35); }
+
+/* ── Case study zoom modal ─────────────────────────── */
+.csOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(4, 3, 3, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: clamp(16px, 5vh, 60px) 16px;
+  overflow-y: auto;
+}
+
+.csModal {
+  position: relative;
+  width: min(760px, 100%);
+  background: linear-gradient(170deg, #15110d, #0a090f);
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  border-radius: 22px;
+  padding: clamp(1.6rem, 4vw, 2.8rem);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  transform-origin: center top;
+  animation: csZoomIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes csZoomIn {
+  from { opacity: 0; transform: scale(0.9) translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.csClose {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--bone-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.csClose:hover { color: var(--bone); border-color: rgba(255, 140, 66, 0.4); }
+
+.csMLabel {
+  font-family: var(--font-utility);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--monitor-blue);
+  margin-bottom: 0.5rem;
+}
+.csMName {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  line-height: 1.1;
+  margin-bottom: 0.7rem;
+}
+.csMTags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
+.csMTag {
+  font-family: var(--font-utility);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  color: var(--bone-dim);
+  border: 1px solid rgba(110, 168, 216, 0.22);
+  background: rgba(110, 168, 216, 0.07);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+}
+
+.csBlock { margin-bottom: 1.5rem; }
+.csHead {
+  font-family: var(--font-utility);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.csHead::before { content: ""; width: 18px; height: 1px; background: var(--ember); }
+.csText { color: var(--bone-dim); line-height: 1.72; font-size: 0.98rem; margin: 0; }
+
+.csSteps {
+  list-style: none;
+  counter-reset: s;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.csSteps li {
+  position: relative;
+  counter-increment: s;
+  padding-left: 2.4rem;
+  color: var(--bone-dim);
+  line-height: 1.65;
+  font-size: 0.96rem;
+}
+.csSteps li::before {
+  content: counter(s);
+  position: absolute;
+  left: 0; top: -2px;
+  width: 1.7rem; height: 1.7rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 0.92rem;
+  color: var(--ember-soft);
+  background: rgba(255, 140, 66, 0.08);
+  border: 1px solid rgba(255, 140, 66, 0.25);
+  border-radius: 50%;
+}
+.csSteps li b { color: var(--bone); font-weight: 600; }
+
+.csOutcome {
+  background: rgba(255, 140, 66, 0.05);
+  border: 1px solid rgba(255, 140, 66, 0.16);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+}
+
+.csMChips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.csMChip {
+  font-family: var(--font-utility);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--ember-soft);
+  border: 1px solid rgba(255, 140, 66, 0.22);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+}
+
+@media (prefers-reduced-motion: reduce) { .csModal { animation: none; } }
