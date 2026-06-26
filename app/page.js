@@ -110,7 +110,7 @@ const PROJECTS = [
     impact: "$500K+ raised in month 1 · 25+ athletes · 70% manual work cut",
     stack: ["0→1", "Airtable", "Zapier", "OKRs", "Agile"],
     img: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&q=80",
-    caseStudy: "secondwind-case-study.html",
+    csId: "nil",
   },
   {
     label: "Flexera · MBA Capstone 2024–25",
@@ -119,6 +119,7 @@ const PROJECTS = [
     impact: "12 interviews · Figma prototype · Full SOW delivered",
     stack: ["AI Analytics", "Figma", "JIRA", "B2B SaaS"],
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    csId: "flexera",
   },
   {
     label: "Personal Project · GitHub Pages",
@@ -127,6 +128,7 @@ const PROJECTS = [
     impact: "~30% food waste reduction · Live on GitHub Pages",
     stack: ["AI/ML", "React", "GitHub Pages"],
     img: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80",
+    csId: "freshplate",
   },
   {
     label: "Flyhomes · Jun 2023 – Jun 2024",
@@ -135,6 +137,7 @@ const PROJECTS = [
     impact: "$48M cost savings · 95% agent satisfaction · 17% CSAT gain",
     stack: ["SQL", "Data Analysis", "Change Mgmt"],
     img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80",
+    csId: "comp",
   },
   {
     label: "Flyhomes · Apr 2022 – Jun 2023",
@@ -143,16 +146,137 @@ const PROJECTS = [
     impact: "68% efficiency gain · 32% CSAT increase · 8% SLA reduction",
     stack: ["Agile/Scrum", "JIRA", "SQL"],
     img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+    csId: "agile",
   },
   {
-    label: "MBA Research · Sierra AI Startup",
-    name: "Enterprise AI GTM Strategy",
-    desc: "Go-to-market strategy and product positioning for Sierra, a VC-backed enterprise AI startup. Produced full competitive analysis, positioning framework, and exec deck.",
-    impact: "Full GTM strategy · Competitive positioning · Exec deck",
-    stack: ["AI/LLMs", "GTM", "Strategy", "Research"],
-    img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
+    label: "Independent build · 2025",
+    name: "AI Trend Radar",
+    desc: "Real-time social trend detection, lifecycle prediction, and marketer recommendations. Reframed the problem through customer discovery with 15+ creators, then scoped a compliance-first MVP.",
+    impact: "Validated with 15+ creators · MVP spec, KPIs & 10-week roadmap",
+    stack: ["Customer discovery", "AI/ML", "FastAPI", "Next.js"],
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    csId: "trendradar",
   },
 ];
+
+/* Full case studies opened by the zoom button. Keyed by csId above. */
+const CASE_STUDIES = {
+  nil: {
+    label: "SecondWind Pro · 2025",
+    name: "NIL Valuation Platform",
+    tags: ["0 to 1", "Customer discovery", "RICE", "GTM", "Airtable + Zapier"],
+    problem:
+      "NIL was a brand new market. Schools, athletes, and brands all needed a way to evaluate partnership decisions, but no one agreed yet on what good looked like. We had a thesis, very little direct access to the people who would actually use the product, and no repeatable way to test what to build.",
+    steps: [
+      "<b>Built a discovery engine instead of guessing.</b> Direct calls with decision makers were hard to get, so I set up surveys, automated outreach, and a recurring newsletter to pull feedback from 30+ schools at scale.",
+      "<b>Let data pick the beachhead.</b> I pulled public NIL and athlete engagement data and grouped schools by visibility, program strength, and NIL activity, so the team focused on the segments most likely to convert.",
+      "<b>Scoped a tight MVP with engineering.</b> I worked with engineering and data to define the core: athlete tagging, risk scoring, and decision support workflows. I prioritized with RICE and cut everything that did not earn its place.",
+      "<b>Automated the busywork.</b> I built Airtable and Zapier flows that removed 70% of manual operations and kept data clean across 100+ institutions.",
+      "<b>Held the line on focus.</b> The hard call was saying no to a broad platform. I pushed the team to solve one problem first, helping schools evaluate NIL opportunities consistently, so we could launch and learn instead of build and hope.",
+    ],
+    outcome:
+      "Launched a true 0 to 1 product serving 500+ D1 athletes with 40% partner-school adoption, opened $500K+ in pipeline in the first month, and left behind a discovery and prioritization process the team kept using.",
+    shows: ["Customer discovery under ambiguity", "Ruthless prioritization", "Working with engineering", "Roadmap and GTM ownership"],
+  },
+  comp: {
+    label: "Flyhomes · 2023–24",
+    name: "Sales Compensation Overhaul",
+    tags: ["Data-driven", "Influence without authority", "Stakeholder mgmt", "Change mgmt"],
+    problem:
+      "The incentive structure paid people across very different markets and deal sizes about the same. Someone closing complex, high value deals earned close to someone handling small ones. That killed motivation for top performers and quietly cost the business. I did not own comp, so I had to change it without the title to do it.",
+    steps: [
+      "<b>Started from data, not opinion.</b> I analyzed compensation, transaction volume, market-level performance, and payout trends across 200+ agents to show exactly where the model broke. I was already running $600K a month in payouts at 100% accuracy, so I knew the numbers cold.",
+      "<b>Listened before prescribing.</b> I ran surveys and talked to advisors and managers. The pattern was clear: little upside to chase bigger or harder deals.",
+      "<b>Gave leaders options, not a verdict.</b> I built a framework with market-based adjustments, performance tiers, and value-linked multipliers, then modeled multiple scenarios with finance so leaders could weigh employee impact against business outcomes themselves.",
+      "<b>Built trust through transparency.</b> Some leaders worried morale would drop if guaranteed pay changed. Instead of arguing, I made the data and assumptions visible and shipped KPI dashboards so agents could see how their work mapped to pay.",
+    ],
+    outcome:
+      "A redesigned model that rewarded top performers and pushed focus toward high value work, delivering $48M in cost savings with zero downtime, a 28% lift in team effectiveness, and a 17% CSAT gain, while keeping engagement and trust intact.",
+    shows: ["Data-driven decisions", "Influence without authority", "Stakeholder management", "Business impact"],
+  },
+  route: {
+    label: "Flyhomes · build vs buy",
+    name: "Tour Routing & Scheduling",
+    tags: ["Build vs buy", "Process improvement", "Scaling ops", "Cross-functional"],
+    problem:
+      "Coordinators scheduled home tours by hand, checking advisor calendars, mapping addresses, and rebuilding routes in Google Maps around traffic. It was slow, hard to scale, and advisors lost real selling time to logistics. As demand grew, it became a hard ceiling on the business.",
+    steps: [
+      "<b>Mapped the real workflow.</b> I walked the end-to-end process and interviewed the people doing it, then pinpointed route planning and schedule building as the true bottleneck.",
+      "<b>Tried to buy first.</b> We evaluated a third-party scheduler. It solved part of the problem but fell short on real-time traffic, routing flexibility, and our scale. I based that call on adoption data and user feedback, not a hunch.",
+      "<b>Scoped a tailored build.</b> I partnered with engineering, product, and design to define an internal tool with traffic-aware routing, travel buffers, advisor availability, and one-click schedule generation.",
+      "<b>Validated with users the whole way.</b> I kept end users in the loop and refined the workflow against how the work actually happened.",
+    ],
+    outcome:
+      "Manual scheduling effort dropped sharply and capacity jumped. One market went from about 50 tours a day to nearly 150 while holding service quality, and advisors got their time back for customers.",
+    shows: ["Process improvement", "Build vs buy judgment", "Scaling operations", "Cross-functional execution"],
+  },
+  flexera: {
+    label: "Flexera · MBA Capstone",
+    name: "AI Win/Loss Analytics",
+    tags: ["AI product", "Customer discovery", "Prototyping", "B2B SaaS"],
+    problem:
+      "Flexera's revenue teams were losing deals without a clear, shared reason why. Win/loss notes lived in scattered places, so patterns never surfaced and forecasting stayed a guess. They needed one place to see what was actually driving wins and losses.",
+    steps: [
+      "<b>Talked to the people who feel the pain.</b> I ran 12 customer discovery interviews across RevOps, sales, and marketing to understand how they reasoned about lost deals today.",
+      "<b>Turned interviews into a model.</b> I mapped the recurring loss drivers like price, timing, and features, and defined the metrics that mattered: win rate trends, funnel analysis, and a predictive view of deal health.",
+      "<b>Designed and validated in Figma.</b> I built a prototype dashboard and put it back in front of the same stakeholders to confirm it answered their real questions before any engineering spend.",
+      "<b>Wrote it up as a shippable spec.</b> I delivered a full scope of work so the team could build with a clear problem, success metrics, and priorities.",
+    ],
+    outcome:
+      "A validated AI win/loss dashboard concept that gives revenue teams one place to see why they win and lose and forecast with more confidence, backed by 12 interviews and a tested prototype.",
+    shows: ["Customer discovery", "AI product framing", "Prototyping and validation", "B2B SaaS judgment"],
+  },
+  freshplate: {
+    label: "Independent build · Anthropic API",
+    name: "FreshPlate, AI Food App",
+    tags: ["Product discovery", "Customer empathy", "AI product", "Ship end to end"],
+    problem:
+      "After moving to the US, I kept buying groceries, forgetting what I already had, and throwing food out. Talking to friends and other students, two things came up again and again: decision fatigue about what to cook, and waste.",
+    steps: [
+      "<b>Framed it as behavior, not recipes.</b> I treated the real problem as how people manage food and make decisions, not as a search for another recipe app.",
+      "<b>Validated before building.</b> I interviewed students and working professionals to confirm the two pain points were shared, not just mine.",
+      "<b>Designed around the insight.</b> I built a concept where you photograph what is in your fridge, AI identifies ingredients and tracks inventory, and you get recipes from what you already own. I added a gamification layer that rewards using up what you have.",
+      "<b>Made it real on the Anthropic API.</b> I shipped it as a single-file web app on the Claude API, so the idea actually worked rather than living in slides.",
+    ],
+    outcome:
+      "A live, working app that turns fridge contents into a dinner you can cook tonight, aimed at cutting household food waste by around 30%.",
+    shows: ["Product discovery", "Customer empathy", "AI product design", "Shipping end to end"],
+  },
+  agile: {
+    label: "Flyhomes · 2022–23",
+    name: "Agile Transformation",
+    tags: ["Agile/Scrum", "KPI dashboards", "Process design", "Continuous improvement"],
+    problem:
+      "Flyhomes ran product like waterfall. Releases were slow, priorities drifted, and there was no shared view of whether the team was actually improving. Customer satisfaction was leaking value that no one could pinpoint.",
+    steps: [
+      "<b>Put rituals in place.</b> I rolled out sprint planning, retrospectives, and clear milestone criteria so the team had a rhythm and a definition of done.",
+      "<b>Made progress measurable.</b> I built SQL-driven KPI dashboards so delivery and customer outcomes were visible week over week, not anecdotal.",
+      "<b>Tightened quality.</b> I set up cross-functional testing protocols so issues got caught before they reached customers.",
+      "<b>Iterated on real behavior.</b> I used retrospectives to keep adjusting the process to what the team and the data showed.",
+    ],
+    outcome:
+      "A faster, calmer delivery engine: roughly 68% efficiency gain, a 32% CSAT increase, and an 8% SLA reduction.",
+    shows: ["Agile leadership", "Metrics-driven delivery", "Process design", "Continuous improvement"],
+  },
+  trendradar: {
+    label: "Independent build · 2025",
+    name: "AI Trend Radar",
+    tags: ["Customer discovery", "Problem reframing", "AI/ML product", "ToS & compliance", "Roadmap & KPIs"],
+    problem:
+      "Social trends peak within days, but creators and marketing teams track them by hand across Reddit, X, Instagram, and TikTok. It is slow and noisy, so they catch waves 3 to 5 days too late and miss the peak. I started with an assumption that creators just needed trend detection, and discovery proved the real problem was sharper than that.",
+    steps: [
+      "<b>Ran real customer discovery, not a survey.</b> I used three techniques: secondary research across creator subreddits, YouTube, and X; qualitative immersion in creator Discord and Slack communities; and fly-on-the-wall observation of 15+ mid-tier creators, comparing their posting timing against view counts.",
+      "<b>Reframed the problem from what I found.</b> The original assumption that creators just need trend detection was too broad. Discovery narrowed it: mid-tier creators with 10K to 500K followers lose 8 to 15 hours a week tracking trends and post 3 to 5 days late, which cut views by 30 to 50%. The real pains were late timing, cross-platform sprawl, and niche noise.",
+      "<b>Designed around timing, not just detection.</b> I scoped a system that unifies compliant signals, detects spikes, clusters topics, forecasts where a trend sits in its lifecycle, and recommends when, where, and how to act. Lifecycle prediction was the wedge, since knowing a trend exists is useless if you are already too late.",
+      "<b>Made compliance a design constraint, not an afterthought.</b> I built the data plan on official and licensed APIs only, the Reddit Data API, X paid tiers, Instagram Graph with Public Content Access, and TikTok research surfaces, with hashed IDs, data minimization, retention limits, and deletion jobs. No scraping.",
+      "<b>Defined success before building.</b> I set measurable targets: precision@k at least 0.6, recall@k at least 0.5, lifecycle stage error within 3 days, time-to-first-trend under 24 hours, alert click-through at least 25%, and an API error budget under 2% a day.",
+      "<b>Sequenced a realistic MVP.</b> I laid out a 10-week plan from a Reddit connector and baseline spike detection, through clustering and lifecycle v1, a recommender and alerts, usability testing with 5 to 8 marketers, and pilot letters of intent at the end.",
+    ],
+    outcome:
+      "A validated, compliance-first product definition: a reframed problem grounded in 15+ creator observations, an MVP architecture, a measurable KPI set, and a 10-week roadmap to a pilot. Discovery turned a vague help-creators-find-trends idea into a sharp bet on lifecycle timing for a specific, underserved segment.",
+    shows: ["Customer discovery rigor", "Problem reframing", "AI/ML product scoping", "Compliance and data ethics", "Roadmap and measurable KPIs"],
+  },
+};
 
 const SKILLS = [
   { group: "Product Strategy", chips: ["Product Roadmapping", "Feature Prioritization (RICE)", "OKR Frameworks", "MVP Development", "GTM Strategy", "User Research", "Customer Discovery", "Competitive Analysis"] },
@@ -192,6 +316,23 @@ const TOOLS = [
   { name: "A/B Testing", mono: "A/B" },
   { name: "LLMs / RAG",  mono: "RAG" },
 ];
+
+/* Small floating background orbs (fixed seeds, no randomness). */
+const ORBS = [
+  { left: "6%",  size: 7,  dur: 26, delay: 0,  x: "18px",  o: 0.16, c: "rgba(255,140,66,.9)" },
+  { left: "15%", size: 4,  dur: 34, delay: 6,  x: "-12px", o: 0.12, c: "rgba(243,237,230,.7)" },
+  { left: "24%", size: 9,  dur: 30, delay: 2,  x: "24px",  o: 0.14, c: "rgba(110,168,216,.8)" },
+  { left: "33%", size: 5,  dur: 38, delay: 9,  x: "-18px", o: 0.10, c: "rgba(255,140,66,.8)" },
+  { left: "44%", size: 6,  dur: 28, delay: 4,  x: "14px",  o: 0.13, c: "rgba(243,237,230,.6)" },
+  { left: "53%", size: 10, dur: 33, delay: 1,  x: "-22px", o: 0.12, c: "rgba(255,140,66,.7)" },
+  { left: "62%", size: 4,  dur: 40, delay: 7,  x: "16px",  o: 0.11, c: "rgba(110,168,216,.7)" },
+  { left: "70%", size: 8,  dur: 27, delay: 3,  x: "-14px", o: 0.15, c: "rgba(255,140,66,.85)" },
+  { left: "79%", size: 5,  dur: 36, delay: 10, x: "20px",  o: 0.10, c: "rgba(243,237,230,.6)" },
+  { left: "87%", size: 7,  dur: 31, delay: 5,  x: "-16px", o: 0.13, c: "rgba(110,168,216,.75)" },
+  { left: "93%", size: 4,  dur: 39, delay: 8,  x: "12px",  o: 0.10, c: "rgba(255,140,66,.7)" },
+  { left: "38%", size: 3,  dur: 44, delay: 12, x: "-10px", o: 0.09, c: "rgba(243,237,230,.5)" },
+];
+
 const RECS = [
   {
     text: "Monisha has been crushing it at the intersection of Second Wind's three core pillars (Tech, Athlete Representation, and University Consulting), seamlessly moving between them like a pro. She consistently turns out high-quality, detail-driven work, takes ownership without hesitation, and sets the bar for leadership and reliability.",
@@ -239,7 +380,40 @@ const STATS = [
   { val: "32%", label: "CSAT Improvement", story: "Customer satisfaction lift from agile transformation and SQL-driven KPI dashboards." },
 ];
 
-/* ── Small components ────────────────────────────────── */
+const BUILD_LAB = [
+  {
+    status: "Live demo", muted: false,
+    name: "FreshPlate",
+    what: "Snap what's in your fridge and get a dinner that uses it up. A food-waste app built on the Anthropic API.",
+    stack: ["Claude API", "Single-file web app", "Zero backend"],
+    href: "https://monishasood.github.io/Product/#", cta: "Open the app",
+    svg: `<svg viewBox="0 0 420 188" role="img" aria-label="FreshPlate suggesting a recipe from fridge contents"><rect x="28" y="40" width="150" height="118" rx="10" fill="#1c1815" stroke="rgba(255,255,255,.08)"/><text x="44" y="62" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">IN YOUR FRIDGE</text><g font-family="Inter, sans-serif" font-size="11" fill="#ddd6cc"><circle cx="46" cy="80" r="2.5" fill="#74b8a6"/><text x="56" y="84">spinach</text><circle cx="46" cy="100" r="2.5" fill="#74b8a6"/><text x="56" y="104">2 eggs</text><circle cx="46" cy="120" r="2.5" fill="#74b8a6"/><text x="56" y="124">feta</text><circle cx="46" cy="140" r="2.5" fill="#e9a23b"/><text x="56" y="144" fill="#e9a23b">tomato · use soon</text></g><path d="M186 99 h26" stroke="#e9a23b" stroke-width="2" fill="none"/><path d="M208 94 l8 5 l-8 5" stroke="#e9a23b" stroke-width="2" fill="none"/><rect x="224" y="40" width="168" height="118" rx="10" fill="#1c1815" stroke="rgba(233,162,59,.3)"/><text x="240" y="62" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#e9a23b" letter-spacing="1">TONIGHT</text><text x="240" y="86" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#f6f1e9">Spinach &amp; feta</text><text x="240" y="106" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#f6f1e9">frittata</text><rect x="240" y="124" width="92" height="22" rx="6" fill="rgba(116,207,142,.16)"/><text x="252" y="139" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#74cf8e">uses 4 of 4 ✓</text></svg>`,
+  },
+  {
+    status: "Live", muted: false,
+    name: "PM Job Radar",
+    what: "An automation that watches PM job boards around the clock and surfaces only the roles worth my time.",
+    stack: ["n8n", "Airtable", "GitHub Pages"],
+    href: "https://monishasood.github.io/Job-Application/", cta: "Open the radar",
+    svg: `<svg viewBox="0 0 420 188" role="img" aria-label="PM Job Radar scanning job boards for matching roles"><g transform="translate(108 94)"><circle r="74" fill="none" stroke="rgba(255,255,255,.08)"/><circle r="49" fill="none" stroke="rgba(255,255,255,.06)"/><circle r="24" fill="none" stroke="rgba(255,255,255,.06)"/><line x1="-74" y1="0" x2="74" y2="0" stroke="rgba(255,255,255,.05)"/><line x1="0" y1="-74" x2="0" y2="74" stroke="rgba(255,255,255,.05)"/><g class="bl-sweep"><path d="M0 0 L74 0 A74 74 0 0 1 30 67 Z" fill="url(#blsweep)"/></g><circle cx="34" cy="-22" r="3.5" fill="#e9a23b"/><circle cx="-44" cy="18" r="3" fill="#74b8a6"/><circle cx="14" cy="40" r="3" fill="#74b8a6"/></g><defs><linearGradient id="blsweep" x1="0" y1="0" x2="1" y2="0.6"><stop offset="0" stop-color="rgba(233,162,59,.45)"/><stop offset="1" stop-color="rgba(233,162,59,0)"/></linearGradient></defs><rect x="224" y="44" width="168" height="100" rx="10" fill="#1c1815" stroke="rgba(255,255,255,.08)"/><text x="240" y="64" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#74cf8e" letter-spacing="1">3 NEW MATCHES</text><g font-family="Inter, sans-serif" font-size="11" fill="#ddd6cc"><text x="240" y="86">PM · AI infra · Remote</text><text x="240" y="106">Sr PM · fintech · NYC</text><text x="240" y="126" fill="#a59d92">APM · seed startup · SF</text></g></svg>`,
+  },
+  {
+    status: "Coming soon", muted: false,
+    name: "PRD-from-a-sentence",
+    what: "Type one sentence about a feature; get back a structured PRD with problem, goals, metrics, and scope.",
+    stack: ["Claude API", "Single-file web app"],
+    href: null, cta: "Coming soon",
+    svg: `<svg viewBox="0 0 420 188" role="img" aria-label="One sentence turning into a structured PRD"><rect x="28" y="50" width="150" height="34" rx="8" fill="#1c1815" stroke="rgba(255,255,255,.1)"/><text x="42" y="71" font-family="Inter, sans-serif" font-size="10.5" fill="#a59d92">"a tool that…"</text><text x="40" y="100" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">ONE SENTENCE</text><path d="M186 67 h26" stroke="#e9a23b" stroke-width="2" fill="none"/><path d="M208 62 l8 5 l-8 5" stroke="#e9a23b" stroke-width="2" fill="none"/><rect x="224" y="28" width="168" height="132" rx="10" fill="#1c1815" stroke="rgba(233,162,59,.3)"/><rect x="240" y="44" width="60" height="8" rx="4" fill="#e9a23b"/><text x="240" y="70" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#74b8a6" letter-spacing="1">PROBLEM</text><rect x="240" y="78" width="136" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/><rect x="240" y="89" width="120" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><text x="240" y="112" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#74b8a6" letter-spacing="1">GOALS &amp; METRICS</text><rect x="240" y="120" width="136" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/><rect x="240" y="131" width="100" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><text x="240" y="153" font-family="Inter, sans-serif" font-size="9.5" fill="#74cf8e">+ requirements, risks, scope</text></svg>`,
+  },
+  {
+    status: "Prototype", muted: true,
+    name: "Win/Loss Analytics",
+    what: "An AI dashboard that reads closed deals and shows revenue teams exactly why they win and lose. Built as my MBA capstone with Flexera.",
+    stack: ["Figma", "Predictive modeling", "B2B SaaS"],
+    href: "https://www.figma.com/make/bzB7xsnk1vSucovqgetxjz/Create-New-Project?p=f&t=qeU6ClxjYyB7f3FP-0", cta: "View the prototype",
+    svg: `<svg viewBox="0 0 420 188" role="img" aria-label="AI win-loss analytics dashboard showing a 62 percent win rate"><g transform="translate(96 96)"><circle r="44" fill="none" stroke="#2a2420" stroke-width="16"/><circle r="44" fill="none" stroke="#e9a23b" stroke-width="16" stroke-dasharray="171 276" stroke-linecap="round" transform="rotate(-90)"/><text x="0" y="-2" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#f6f1e9">62%</text><text x="0" y="16" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#a59d92" letter-spacing="1">WIN RATE</text></g><text x="200" y="52" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">TOP LOSS DRIVERS</text><g font-family="Inter, sans-serif" font-size="10" fill="#ddd6cc"><text x="200" y="76">Price</text><rect x="262" y="68" width="120" height="9" rx="4.5" fill="#e9a23b"/><text x="200" y="100">Timing</text><rect x="262" y="92" width="84" height="9" rx="4.5" fill="#c98a33"/><text x="200" y="124">Features</text><rect x="262" y="116" width="58" height="9" rx="4.5" fill="#8f6428"/></g></svg>`,
+  },
+];
 
 /* ── Ambient interactive background ──────────────────── */
 
@@ -293,12 +467,10 @@ function AmbientBackground() {
       ctx.clearRect(0, 0, W, H);
 
       for (const d of dust) {
-        // gentle upward drift + sine sway
         d.y += d.vy;
         if (d.y < -10) { d.y = H + 10; d.x = Math.random() * W; }
         const sway = Math.sin(t * d.sp + d.ph) * 0.4;
 
-        // cursor repel
         const dx = d.x - mx, dy = d.y - my;
         const dist = Math.hypot(dx, dy);
         if (dist < 130 && dist > 0) {
@@ -316,7 +488,6 @@ function AmbientBackground() {
         ctx.fill();
       }
 
-      // lerped cursor glow
       gx += (mx - gx) * 0.06;
       gy += (my - gy) * 0.06;
       if (glowRef.current) {
@@ -337,6 +508,31 @@ function AmbientBackground() {
     <div className={styles.ambient} aria-hidden="true">
       <canvas ref={canvasRef} />
       <div ref={glowRef} className={styles.cursorGlow} />
+    </div>
+  );
+}
+
+/* ── Small floating background orbs ──────────────────── */
+
+function FloatingOrbs() {
+  return (
+    <div className={styles.floaters} aria-hidden="true">
+      {ORBS.map((o, i) => (
+        <span
+          key={i}
+          className={styles.orb}
+          style={{
+            left: o.left,
+            width: o.size,
+            height: o.size,
+            "--d": `${o.dur}s`,
+            "--delay": `${o.delay}s`,
+            "--x": o.x,
+            "--o": o.o,
+            "--c": o.c,
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -396,6 +592,8 @@ function HireToast() {
   );
 }
 
+/* ── Animated stat number ────────────────────────────── */
+
 function StatVal({ val, accent }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -432,6 +630,8 @@ function StatVal({ val, accent }) {
   );
 }
 
+/* ── Company logo with monogram fallback ─────────────── */
+
 function Logo({ src, mono }) {
   const [failed, setFailed] = useState(false);
   return (
@@ -445,7 +645,48 @@ function Logo({ src, mono }) {
   );
 }
 
-function FlipCard({ p }) {
+/* ── Tools marquee ───────────────────────────────────── */
+
+function ToolPill({ t }) {
+  const [failed, setFailed] = useState(false);
+  return (
+    <span className={styles.toolPill}>
+      {t.img && !failed ? (
+        <img
+          src={t.img}
+          alt=""
+          className={t.invert ? styles.toolPillInvert : undefined}
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span className={styles.toolPillMono}>
+          {t.mono || t.name.replace(/[^A-Za-z]/g, "").slice(0, 2).toUpperCase()}
+        </span>
+      )}
+      <span className={styles.toolPillName}>{t.name}</span>
+    </span>
+  );
+}
+
+function ToolsMarquee() {
+  const half = Math.ceil(TOOLS.length / 2);
+  const rowA = TOOLS.slice(0, half);
+  const rowB = TOOLS.slice(half);
+  return (
+    <div className={styles.toolsMarquee} aria-label="Tools and platforms">
+      <div className={`${styles.toolsRow} ${styles.toolsRowL}`} aria-hidden="true">
+        {[...rowA, ...rowA].map((t, i) => <ToolPill key={`a${i}`} t={t} />)}
+      </div>
+      <div className={`${styles.toolsRow} ${styles.toolsRowR}`} aria-hidden="true">
+        {[...rowB, ...rowB].map((t, i) => <ToolPill key={`b${i}`} t={t} />)}
+      </div>
+    </div>
+  );
+}
+
+/* ── Case study flip card (flip for summary, zoom for detail) ── */
+
+function CaseStudyFlipCard({ p, onOpen }) {
   const [flipped, setFlipped] = useState(false);
   return (
     <div
@@ -454,22 +695,16 @@ function FlipCard({ p }) {
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setFlipped((f) => !f);
-        }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setFlipped((f) => !f); }
       }}
       aria-pressed={flipped}
       aria-label={`${p.name}, click to flip`}
     >
       <div className={`${styles.flipInner} ${flipped ? styles.flipped : ""}`}>
-        <div
-          className={styles.flipFront}
-          style={{ backgroundImage: `url('${p.img}')` }}
-        >
+        <div className={styles.flipFront} style={{ backgroundImage: `url('${p.img}')` }}>
           <span className={styles.flipScrim} aria-hidden="true" />
           <span className={styles.flipTitle}>{p.name}</span>
-          <span className={styles.flipHint}>↻ click to reveal</span>
+          <span className={styles.flipHint}>↻ click to flip</span>
         </div>
         <div className={styles.flipBack}>
           <div>
@@ -478,17 +713,16 @@ function FlipCard({ p }) {
             <p className={styles.pbDesc}>{p.desc}</p>
             <p className={styles.pbImpact}>{p.impact}</p>
             <div className={styles.pbStack}>
-              {p.stack.map((s) => (
-                <span key={s} className={styles.pbPill}>{s}</span>
-              ))}
+              {p.stack.map((s) => <span key={s} className={styles.pbPill}>{s}</span>)}
             </div>
-             {p.caseStudy && (
-                href={p.caseStudy}
-                onClick={(e) => e.stopPropagation()}
-                style={{ display: "inline-block", marginTop: "12px", color: "var(--ember)", fontWeight: 600, fontSize: "0.9rem", textDecoration: "none" }}
+            {p.csId && (
+              <button
+                type="button"
+                className={styles.pbZoom}
+                onClick={(e) => { e.stopPropagation(); onOpen(p.csId); }}
               >
-                Read the full case study →
-              </a>
+                ⤢ View full case study
+              </button>
             )}
           </div>
           <span className={styles.pbBack}>↩ flip back</span>
@@ -497,6 +731,62 @@ function FlipCard({ p }) {
     </div>
   );
 }
+
+/* ── Case study zoom modal ───────────────────────────── */
+
+function CaseStudyModal({ cs, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [onClose]);
+
+  if (!cs) return null;
+  return (
+    <div className={styles.csOverlay} onClick={onClose}>
+      <div
+        className={styles.csModal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cs-name"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className={styles.csClose} onClick={onClose} aria-label="Close case study">✕</button>
+        <p className={styles.csMLabel}>{cs.label}</p>
+        <h2 className={styles.csMName} id="cs-name">{cs.name}</h2>
+        <div className={styles.csMTags}>
+          {cs.tags.map((t) => <span key={t} className={styles.csMTag}>{t}</span>)}
+        </div>
+
+        <div className={styles.csBlock}>
+          <p className={styles.csHead}>The problem</p>
+          <p className={styles.csText}>{cs.problem}</p>
+        </div>
+
+        <div className={styles.csBlock}>
+          <p className={styles.csHead}>My approach as PM</p>
+          <ol className={styles.csSteps}>
+            {cs.steps.map((s, i) => <li key={i} dangerouslySetInnerHTML={{ __html: s }} />)}
+          </ol>
+        </div>
+
+        <div className={styles.csBlock}>
+          <p className={styles.csHead}>The outcome</p>
+          <div className={styles.csOutcome}><p className={styles.csText}>{cs.outcome}</p></div>
+        </div>
+
+        <div className={styles.csBlock}>
+          <p className={styles.csHead}>What this shows</p>
+          <div className={styles.csMChips}>
+            {cs.shows.map((s) => <span key={s} className={styles.csMChip}>{s}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── Page ────────────────────────────────────────────── */
 
 const NAV = [
@@ -506,11 +796,12 @@ const NAV = [
   ["build-lab", "Build Lab"],
   ["skills", "Skills"],
   ["recommendations", "Recommendations"],
-  ["awards", "Recognition"], 
+  ["awards", "Recognition"],
 ];
 
 export default function Home() {
   const [active, setActive] = useState("");
+  const [activeCase, setActiveCase] = useState(null);
 
   /* Scrollspy: highlight the section in view */
   useEffect(() => {
@@ -555,6 +846,7 @@ export default function Home() {
     <main>
       <ScrollProgress />
       <AmbientBackground />
+      <FloatingOrbs />
       <HireToast />
 
       {/* ── Nav ─────────────────────────────────────── */}
@@ -689,81 +981,57 @@ export default function Home() {
             Products built from <em>zero.</em>
           </h2>
           <div className={styles.projectsGrid}>
-           {PROJECTS.map((p) => <FlipCard key={p.name} p={p} />)}
+            {PROJECTS.map((p) => (
+              <CaseStudyFlipCard key={p.name} p={p} onOpen={(id) => setActiveCase(CASE_STUDIES[id])} />
+            ))}
           </div>
         </section>
 
         {/* ── Build Lab ───────────────────────────────── */}
-      {
-        status: "Live demo", muted: false,
-        name: "FreshPlate",
-        what: "Snap what's in your fridge and get a dinner that uses it up. A food-waste app built on the Anthropic API.",
-        stack: ["Claude API", "Single-file web app", "Zero backend"],
-        href: "https://monishasood.github.io/Product/#", cta: "Open the app",
-        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="FreshPlate suggesting a recipe from fridge contents"><rect x="28" y="40" width="150" height="118" rx="10" fill="#1c1815" stroke="rgba(255,255,255,.08)"/><text x="44" y="62" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">IN YOUR FRIDGE</text><g font-family="Inter, sans-serif" font-size="11" fill="#ddd6cc"><circle cx="46" cy="80" r="2.5" fill="#74b8a6"/><text x="56" y="84">spinach</text><circle cx="46" cy="100" r="2.5" fill="#74b8a6"/><text x="56" y="104">2 eggs</text><circle cx="46" cy="120" r="2.5" fill="#74b8a6"/><text x="56" y="124">feta</text><circle cx="46" cy="140" r="2.5" fill="#e9a23b"/><text x="56" y="144" fill="#e9a23b">tomato · use soon</text></g><path d="M186 99 h26" stroke="#e9a23b" stroke-width="2" fill="none"/><path d="M208 94 l8 5 l-8 5" stroke="#e9a23b" stroke-width="2" fill="none"/><rect x="224" y="40" width="168" height="118" rx="10" fill="#1c1815" stroke="rgba(233,162,59,.3)"/><text x="240" y="62" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#e9a23b" letter-spacing="1">TONIGHT</text><text x="240" y="86" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#f6f1e9">Spinach &amp; feta</text><text x="240" y="106" font-family="Fraunces, serif" font-size="17" font-weight="600" fill="#f6f1e9">frittata</text><rect x="240" y="124" width="92" height="22" rx="6" fill="rgba(116,207,142,.16)"/><text x="252" y="139" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#74cf8e">uses 4 of 4 ✓</text></svg>`,
-      },
-      {
-        status: "Live", muted: false,
-        name: "PM Job Radar",
-        what: "An automation that watches PM job boards around the clock and surfaces only the roles worth my time.",
-        stack: ["n8n", "Airtable", "GitHub Pages"],
-        href: "https://monishasood.github.io/Job-Application/", cta: "Open the radar",
-        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="PM Job Radar scanning job boards for matching roles"><g transform="translate(108 94)"><circle r="74" fill="none" stroke="rgba(255,255,255,.08)"/><circle r="49" fill="none" stroke="rgba(255,255,255,.06)"/><circle r="24" fill="none" stroke="rgba(255,255,255,.06)"/><line x1="-74" y1="0" x2="74" y2="0" stroke="rgba(255,255,255,.05)"/><line x1="0" y1="-74" x2="0" y2="74" stroke="rgba(255,255,255,.05)"/><g class="bl-sweep"><path d="M0 0 L74 0 A74 74 0 0 1 30 67 Z" fill="url(#blsweep)"/></g><circle cx="34" cy="-22" r="3.5" fill="#e9a23b"/><circle cx="-44" cy="18" r="3" fill="#74b8a6"/><circle cx="14" cy="40" r="3" fill="#74b8a6"/></g><defs><linearGradient id="blsweep" x1="0" y1="0" x2="1" y2="0.6"><stop offset="0" stop-color="rgba(233,162,59,.45)"/><stop offset="1" stop-color="rgba(233,162,59,0)"/></linearGradient></defs><rect x="224" y="44" width="168" height="100" rx="10" fill="#1c1815" stroke="rgba(255,255,255,.08)"/><text x="240" y="64" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#74cf8e" letter-spacing="1">3 NEW MATCHES</text><g font-family="Inter, sans-serif" font-size="11" fill="#ddd6cc"><text x="240" y="86">PM · AI infra · Remote</text><text x="240" y="106">Sr PM · fintech · NYC</text><text x="240" y="126" fill="#a59d92">APM · seed startup · SF</text></g></svg>`,
-      },
-      {
-        status: "Coming soon", muted: false,
-        name: "PRD-from-a-sentence",
-        what: "Type one sentence about a feature; get back a structured PRD with problem, goals, metrics, and scope.",
-        stack: ["Claude API", "Single-file web app"],
-        href: null, cta: "Coming soon",
-        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="One sentence turning into a structured PRD"><rect x="28" y="50" width="150" height="34" rx="8" fill="#1c1815" stroke="rgba(255,255,255,.1)"/><text x="42" y="71" font-family="Inter, sans-serif" font-size="10.5" fill="#a59d92">"a tool that…"</text><text x="40" y="100" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">ONE SENTENCE</text><path d="M186 67 h26" stroke="#e9a23b" stroke-width="2" fill="none"/><path d="M208 62 l8 5 l-8 5" stroke="#e9a23b" stroke-width="2" fill="none"/><rect x="224" y="28" width="168" height="132" rx="10" fill="#1c1815" stroke="rgba(233,162,59,.3)"/><rect x="240" y="44" width="60" height="8" rx="4" fill="#e9a23b"/><text x="240" y="70" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#74b8a6" letter-spacing="1">PROBLEM</text><rect x="240" y="78" width="136" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/><rect x="240" y="89" width="120" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><text x="240" y="112" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#74b8a6" letter-spacing="1">GOALS &amp; METRICS</text><rect x="240" y="120" width="136" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/><rect x="240" y="131" width="100" height="5" rx="2.5" fill="rgba(255,255,255,.12)"/><text x="240" y="153" font-family="Inter, sans-serif" font-size="9.5" fill="#74cf8e">+ requirements, risks, scope</text></svg>`,
-      },
-      {
-        status: "Prototype", muted: true,
-        name: "Win/Loss Analytics",
-        what: "An AI dashboard that reads closed deals and shows revenue teams exactly why they win and lose. Built as my MBA capstone with Flexera.",
-        stack: ["Figma", "Predictive modeling", "B2B SaaS"],
-        href: "https://www.figma.com/make/bzB7xsnk1vSucovqgetxjz/Create-New-Project?p=f&t=qeU6ClxjYyB7f3FP-0", cta: "View the prototype",
-        svg: `<svg viewBox="0 0 420 188" role="img" aria-label="AI win-loss analytics dashboard showing a 62 percent win rate"><g transform="translate(96 96)"><circle r="44" fill="none" stroke="#2a2420" stroke-width="16"/><circle r="44" fill="none" stroke="#e9a23b" stroke-width="16" stroke-dasharray="171 276" stroke-linecap="round" transform="rotate(-90)"/><text x="0" y="-2" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#f6f1e9">62%</text><text x="0" y="16" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" font-weight="700" fill="#a59d92" letter-spacing="1">WIN RATE</text></g><text x="200" y="52" font-family="JetBrains Mono, monospace" font-size="9" font-weight="700" fill="#a59d92" letter-spacing="1">TOP LOSS DRIVERS</text><g font-family="Inter, sans-serif" font-size="10" fill="#ddd6cc"><text x="200" y="76">Price</text><rect x="262" y="68" width="120" height="9" rx="4.5" fill="#e9a23b"/><text x="200" y="100">Timing</text><rect x="262" y="92" width="84" height="9" rx="4.5" fill="#c98a33"/><text x="200" y="124">Features</text><rect x="262" y="116" width="58" height="9" rx="4.5" fill="#8f6428"/></g></svg>`,
-      },
-    ].map((p) => {
-      const tilt = (e) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        const c = e.currentTarget, r = c.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        c.style.transform = `translateY(-6px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
-      };
-      const reset = (e) => { e.currentTarget.style.transform = ""; };
-      return (
-        <article key={p.name} className="bl-card" onPointerMove={tilt} onPointerLeave={reset}>
-          <div className="bl-preview">
-            <span className="bl-status" style={p.muted ? { color: "#a59d92" } : undefined}>
-              <span className="bl-dot" style={p.muted ? { background: "#a59d92", animation: "none", boxShadow: "none" } : undefined} />
-              {p.status}
-            </span>
-            <div className="bl-svg" dangerouslySetInnerHTML={{ __html: p.svg }} />
+        <section className={styles.section} id="build-lab">
+          <p className={`${styles.eyebrow} ${styles.reveal}`}>Build Lab</p>
+          <h2 className={`${styles.title} ${styles.reveal}`}>
+            Things I <em>build</em> on the side.
+          </h2>
+          <div className="bl-grid">
+            {BUILD_LAB.map((p) => {
+              const tilt = (e) => {
+                if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+                const c = e.currentTarget, r = c.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width - 0.5;
+                const py = (e.clientY - r.top) / r.height - 0.5;
+                c.style.transform = `translateY(-6px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
+              };
+              const reset = (e) => { e.currentTarget.style.transform = ""; };
+              return (
+                <article key={p.name} className="bl-card" onPointerMove={tilt} onPointerLeave={reset}>
+                  <div className="bl-preview">
+                    <span className="bl-status" style={p.muted ? { color: "#a59d92" } : undefined}>
+                      <span className="bl-dot" style={p.muted ? { background: "#a59d92", animation: "none", boxShadow: "none" } : undefined} />
+                      {p.status}
+                    </span>
+                    <div className="bl-svg" dangerouslySetInnerHTML={{ __html: p.svg }} />
+                  </div>
+                  <div className="bl-body">
+                    <h3 className="bl-name">{p.name}</h3>
+                    <p className="bl-what">{p.what}</p>
+                    <div className="bl-stack">{p.stack.map((s) => <span key={s}>{s}</span>)}</div>
+                    <div className="bl-actions">
+                      {p.href ? (
+                        <a className="bl-open" href={p.href} target="_blank" rel="noopener noreferrer">
+                          {p.cta}
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                        </a>
+                      ) : (
+                        <span className="bl-soon">{p.cta}</span>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
-          <div className="bl-body">
-            <h3 className="bl-name">{p.name}</h3>
-            <p className="bl-what">{p.what}</p>
-            <div className="bl-stack">{p.stack.map((s) => <span key={s}>{s}</span>)}</div>
-            <div className="bl-actions">
-              {p.href ? (
-                <a className="bl-open" href={p.href} target="_blank" rel="noopener noreferrer">
-                  {p.cta}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
-                </a>
-              ) : (
-                <span className="bl-soon">{p.cta}</span>
-              )}
-            </div>
-          </div>
-        </article>
-      );
-    })}
-  </div>
-</section>
+        </section>
 
         {/* ── Skills ──────────────────────────────────── */}
         <section className={styles.section} id="skills">
@@ -783,22 +1051,7 @@ export default function Home() {
           </div>
           <div className={`${styles.toolsSection} ${styles.reveal}`}>
             <p className={styles.skGroup}>Tools &amp; Platforms</p>
-            <div className={styles.toolsGrid}>
-              {TOOLS.map((t) => (
-                <div key={t.name} className={styles.toolCard}>
-                  {t.img ? (
-                    <img
-                      src={t.img}
-                      alt=""
-                      style={t.invert ? { filter: "invert(1) brightness(0.85)" } : undefined}
-                    />
-                  ) : (
-                    <span className={styles.toolMono}>{t.mono}</span>
-                  )}
-                  <span className={styles.toolName}>{t.name}</span>
-                </div>
-              ))}
-            </div>
+            <ToolsMarquee />
           </div>
         </section>
 
@@ -884,6 +1137,9 @@ export default function Home() {
           </span>
         </footer>
       </div>
+
+      {/* ── Case study zoom modal ───────────────────── */}
+      {activeCase && <CaseStudyModal cs={activeCase} onClose={() => setActiveCase(null)} />}
     </main>
   );
 }
